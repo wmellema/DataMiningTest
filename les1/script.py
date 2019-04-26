@@ -19,7 +19,7 @@ plot_data(xs, ys, myPerceptron)
 # myPerceptron.train(xs[0], ys[0])
 # plot_data(xs, ys, myPerceptron)
 # myPerceptron.fit(xs, ys, max_epochs=1)
-# plot_data(xs, ys, myPerceptron)
+plot_data(xs, ys, myPerceptron)
 # myPerceptron.fit(xs, ys)
 plot_data(xs, ys, myPerceptron, final=True)
 

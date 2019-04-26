@@ -165,7 +165,7 @@ def cloud(nominal, num=256, dim=2, bias=None, weights=None, noise=0.0, seed=None
     xs = [[random.gauss(0.0, 8.0) for d in range(dim)] for n in range(num)]
     # Generate outcomes
     if nominal:
-        ys = [[1, 0] if bias+sum(wi*xi for wi, xi in zip(weights, x)) < 0 else [0, 1] for x in xs]
+        ys = [[1, -1] if bias+sum(wi*xi for wi, xi in zip(weights, x)) < 0 else [-1, 1] for x in xs]
     else:
         ys = [[bias+sum(wi*xi for wi, xi in zip(weights, x))] for x in xs]
     # Add noise to the attributes

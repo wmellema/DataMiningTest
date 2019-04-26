@@ -26,18 +26,21 @@ class Perceptron():
                 summ = j * self.weights
                 summm = summ + self.bias
                 if summm < 0:
-                    y_hat_list.append([1,0])
+                    y_hat_list.append([1,-1])
                 else:
-                    y_hat_list.append([0,1])
+                    y_hat_list.append([-1,1])
         return y_hat_list
         
     def train(self, x, y):
         # "x" contains a list with the attributes of a single instance
         # "y" contains the corresponding correct label
         # 𝑏←𝑏+(𝑦−𝑦̂ )   𝑤𝑖←𝑤𝑖+(𝑦−𝑦̂ )𝑥𝑖
-        print(y)
-        print(self.predict(x))
-        print(x)
+        predictions = self.predict(x)
+        for i,datapoint in enumerate(x):
+            real_y = y[i][0]
+            pred_y = predictions[i][0]
+            
+            self.bias = self.bias + (real_y - pred_y)
         #difference_y_and_y_hat = 
         
         pass
