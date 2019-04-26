@@ -44,11 +44,12 @@ class Perceptron():
             output[j] = y_hat
         
         return [output for i in x]
-        
+
     def train(self, x, y):
         # "x" contains a list with the attributes of a single instance
         # "y" contains the corresponding correct label
         # 𝑏←𝑏+(𝑦−𝑦̂ )   𝑤𝑖←𝑤𝑖+(𝑦−𝑦̂ )𝑥𝑖
+
         print(y)
         print(x)
         
