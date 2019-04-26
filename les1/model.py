@@ -8,11 +8,10 @@ class Perceptron():
 
     def __init__(self, dim=2):
         # "dim" equals the dimensionality of the attributes
-        self.bias = 0.0
+        self.bias = 1.0
         self.weights = list()
         for d in range(dim):
             self.weights.append(dim)
-        print(self.weights)
 
 
     def predict(self, x):
@@ -30,37 +29,35 @@ class Perceptron():
         return post_activation
 
     def train(self, x, y):
-        print(x)
-        print(y)
         # "x" contains a list with the attributes of a single instance
         # "y" contains the corresponding correct label
-        y_hat_list = []
-        for i in x:
-            for j in self.weights:
-                print(i)
-                print(j)
-                summ = float(i) * float(j)
-                summm = summ + self.bias
-                if summm < 0:
-                    y_hat_list.append([-1])
-                else:
-                    y_hat_list.append([1])
-        print(y_hat_list)
-        return y_hat_list
+        """
+        b <- b + (y-y_hat)
+        wi <- wi + (y-y_hat)x[i]
+        """
+        self.bias = self.bias + (y - self.predict(x))
+        for count,i in enumerate(self.weights):
+            self.weights[count] = self.weights[count] + (y - self.predict(x)) * x[count]
+
 
     def fit(self, xs, ys, max_epochs=0):
         # "x" contains a nested list with the attributes of multiple instances
+        for x in xs:
+            self.predict(x)
         # "y" contains a list with the corresponding correct labels
+        for x in xs:
+            for y in ys:
+                self.train(x,y)
         # "max_epochs" states the maximum allowed number of epochs (0=unlimited)
-        pass
 
 class LinearRegression():
 
     def __init__(self, dim=2):
         #"dim" equals the dimensionality of the attributes
-        #self.bias = ...
-        #self.weights = ...
-        pass
+        self.bias = 1.0
+        self.weights = list()
+        for d in range(dim):
+            self.weights.append(dim)
 
     def predict(self, x):
         # "x" contains a list with the attributes of a single instance
