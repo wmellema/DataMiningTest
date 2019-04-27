@@ -41,11 +41,22 @@ class Perceptron():
             self.weights[count] = self.weights[count] + (y - self.predict(x)) * x[count]
 
 
-    def fit(self, xs, ys, max_epochs=0):
+    def fit(self, xs, ys, max_epochs=10):
         # "x" contains a nested list with the attributes of multiple instances
         # "y" contains a list with the corresponding correct labels
-        for i,x in enumerate(xs):
-            self.train(x,ys[i])
+        unl = max_epochs is 0
+        curr_e = max_epochs
+        while True:
+            bias = self.bias
+            weights = self.weights
+            for i,x in enumerate(xs):
+                self.train(x,ys[i])
+            if bias is self.bias and weights is self.weights:
+                break
+            if curr_e < 1 and not unl:
+                break
+            curr_e = curr_e - 1
+            
         # "max_epochs" states the maximum allowed number of epochs (0=unlimited)
 
 class LinearRegression():
@@ -65,7 +76,7 @@ class LinearRegression():
         
         return pre_activation
 
-    def train(self, x, y, alpha=0):
+    def train(self, x, y, alpha=0.01):
         # "x" contains a list with the attributes of a single instance
         # "y" contains the corresponding correct outcome
         # "alpha" is the learning rate; choose a suitable default value
@@ -73,12 +84,23 @@ class LinearRegression():
         for count,j in enumerate(self.weights):
             self.weights[count] = self.weights[count] + alpha * (y - self.predict(x)) * x[count]
 
-    def fit(self, xs, ys, alpha=0, max_epochs=10):   # Choose a good default value for alpha
+    def fit(self, xs, ys, alpha=0.01, max_epochs=20):   # Choose a good default value for alpha
         # "x" contains a nested list with the attributes of multiple instances
         # "y" contains a list with the corresponding correct outcomes
         # "alpha" is the learning rate; choose a suitable default value
         # "max_epochs" states the maximum allowed number of epochs (0=unlimited)
-        pass
+        unl = max_epochs is 0
+        curr_e = max_epochs
+        while True:
+            bias = self.bias
+            weights = self.weights
+            for i,x in enumerate(xs):
+                self.train(x,ys[i], alpha)
+            if bias is self.bias and weights is self.weights:
+                break
+            if curr_e < 1 and not unl:
+                break
+            curr_e = curr_e - 1
 
 # REDIRECT EXECUTION
 
