@@ -83,7 +83,7 @@ def scatter(xs, ys, model=None):
         elif scalar_y:
             paint_y = [[model.predict([xi, yi]) for xi in paint_x] for yi in paint_x]
         else:
-            paint_y = [[model.predict([xi, yi])[n] for xi in paint_x] for yi in paint_x]
+            paint_y = [[model.predict([xi, yi]) for xi in paint_x] for yi in paint_x]
         ax.imshow(paint_y, origin='lower', extent=(-range_x, range_x, -range_x, range_x), vmin=-range_y, vmax=range_y, interpolation='bilinear', cmap=plt.cm.RdYlBu)
         # Draw dashed line at contour zero
         with warnings.catch_warnings():   # Ignore warning that zero-contour is absent

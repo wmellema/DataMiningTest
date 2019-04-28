@@ -73,6 +73,7 @@ class Neuron():
 
     def predict(self, x):
         # "x" contains a list with the attributes of a single instance
+        
         pre_activation = self.bias + sum(wi*xi for wi, xi in zip(self.weights, x))
         post_activation = self.act_func(pre_activation)
         return post_activation

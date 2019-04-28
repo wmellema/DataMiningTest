@@ -9,7 +9,10 @@ from copy import deepcopy
 
 # FUNCTIONS:
 
-## Insert previous definitions of activation-, loss- and derivative-functions
+## Insert previous definitions of activation-, loss- and derivative-functions!
+
+def logistic_act_func(a):
+    return None
 
 def softplus_act_func(a):
     return None
@@ -23,7 +26,7 @@ def crossentropy_loss_func(y_hat, y):
 
 # CLASSES
 
-## Insert previous definitions of the Layer-, FullLayer- and LossLayer-classes
+## Insert previous definitions of the Layer-, FullLayer- and LossLayer-classes!
 
 class SoftmaxLayer(Layer):
 
